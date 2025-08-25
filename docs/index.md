@@ -39,3 +39,7 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
     (s 'reset-count)        
     (s 9)                   ; 3
     (s 'how-many-calls?)    ; 1
+
+**Epilogue**
+
+This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket.

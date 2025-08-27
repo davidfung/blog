@@ -2,3 +2,6 @@ site_name: pseudocode
 
 nav:
   - index.md
+
+extra_css:
+  - css/extra.css

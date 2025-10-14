@@ -1,8 +1,49 @@
 # pseudocode blog
 
-## SICP Exercise 3.2
+002-2025-10
 
+## Crafting IsOdd()
+
+**Mutually Recursive**
+
+Crafting Interpreters chapter 8 shows us an interesting way to implement IsOdd() & IsEven() by mutually calling each other recursively.
+
+**Implementation in Go**
+
+    package main
+
+    import "fmt"
+
+    func isOdd(i int) bool {
+      if i == 0 {
+        return false
+      } else {
+        return isEven(i - 1)
+      }
+    }
+
+    func isEven(i int) bool {
+      if i == 0 {
+        return true
+      } else {
+        return isOdd(i - 1)
+      }
+    }
+    func main() {
+      fmt.Println(isOdd(100))  // print false
+      fmt.Println(isOdd(101))  // print true
+      fmt.Println(isEven(100)) // print true
+      fmt.Println(isEven(101)) // print false
+    }
+
+**Epilog**
+
+[Crafting Interpreters](https://craftinginterpreters.com) is handcrafted by Robert Nystrom.
+
+<br/><br/><br/>
 001-2025-08
+
+## SICP Exercise 3.2
 
 **Structure and Interpretation of Computer Programs**
 
@@ -16,7 +57,7 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
     (s 'how-many-calls?)
     1
 
-***Implementation***
+**Implementation**
 
     #lang racket
 
@@ -32,7 +73,7 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
       mf
     )
 
-***Test***
+**Test**
 
     (define s (make-monitored sqrt))
     (s 144)                 ; 12
@@ -42,6 +83,6 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
     (s 9)                   ; 3
     (s 'how-many-calls?)    ; 1
 
-***Epilogue***
+**Epilog**
 
 This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket. 

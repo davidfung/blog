@@ -1,6 +1,8 @@
 # pseudocode blog
 
-## 2025-08 SICP Exercise 3.2
+## SICP Exercise 3.2
+
+001-2025-08
 
 **Structure and Interpretation of Computer Programs**
 
@@ -14,7 +16,7 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
     (s 'how-many-calls?)
     1
 
-**Implementation**
+***Implementation***
 
     #lang racket
 
@@ -30,7 +32,7 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
       mf
     )
 
-**Test**
+***Test***
 
     (define s (make-monitored sqrt))
     (s 144)                 ; 12
@@ -40,6 +42,6 @@ Exercise 3.2.  In software-testing applications, it is useful to be able to coun
     (s 9)                   ; 3
     (s 'how-many-calls?)    ; 1
 
-**Epilogue**
+***Epilogue***
 
-This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket.
+This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket. 

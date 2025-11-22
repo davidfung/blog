@@ -1,3 +1,7 @@
 .nav-link {
   display: none;
 }
+
+div.col-md-3 {
+  display: none;
+}

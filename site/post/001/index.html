@@ -4,24 +4,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>pseudocode</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>001 - pseudocode</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
-        <link href="css/extra.css" rel="stylesheet">
+        <link href="../../css/extra.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">pseudocode</a>
+                <a class="navbar-brand" href="../..">pseudocode</a>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -49,19 +49,55 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#sicp-exercise-32" class="nav-link">SICP Exercise 3.2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<ul>
-<li>2025<ul>
-<li>2025-11-21 <a href="post/003/">Something good is coming...</a></li>
-<li>2025-10-14 <a href="post/002/">Crafting IsOdd()</a></li>
-<li>2025-08-19 <a href="post/001/">SICP Exercise 3.2</a></li>
-</ul>
-</li>
-</ul></div>
+<p>2025-08-19</p>
+<h1 id="sicp-exercise-32">SICP Exercise 3.2</h1>
+<p><strong>Structure and Interpretation of Computer Programs</strong></p>
+<p>Exercise 3.2.  In software-testing applications, it is useful to be able to count the number of times a given procedure is called during the course of a computation. Write a procedure make-monitored that takes as input a procedure, f, that itself takes one input. The result returned by make-monitored is a third procedure, say mf, that keeps track of the number of times it has been called by maintaining an internal counter. If the input to mf is the special symbol how-many-calls?, then mf returns the value of the counter. If the input is the special symbol reset-count, then mf resets the counter to zero. For any other input, mf returns the result of calling f on that input and increments the counter. For instance, we could make a monitored version of the sqrt procedure:</p>
+<pre><code>(define s (make-monitored sqrt))
+
+(s 100)
+10
+
+(s 'how-many-calls?)
+1
+</code></pre>
+<p><strong>Implementation</strong></p>
+<pre><code>#lang racket
+
+(define (make-monitored f)
+  (define count 0)
+  (define (mf a)
+    (cond [(eq? a 'how-many-calls?) count]
+          [(eq? a 'reset-count) (set! count 0)]
+          [else (set! count (+ count 1))
+                (f a)]
+    )
+  )
+  mf
+)
+</code></pre>
+<p><strong>Test</strong></p>
+<pre><code>(define s (make-monitored sqrt))
+(s 144)                 ; 12
+(s 121)                 ; 11
+(s 'how-many-calls?)    ; 2
+(s 'reset-count)        
+(s 9)                   ; 3
+(s 'how-many-calls?)    ; 1
+</code></pre>
+<p><strong>Epilog</strong></p>
+<p>This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket. </p>
+<p><br/><a href="../002/"><em>Next</em> &gt;</a></p></div>
             </div>
         </div>
 
@@ -69,14 +105,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -141,8 +177,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2025-11-22 09:18:04.135267+00:00
--->

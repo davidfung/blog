@@ -1,6 +1,6 @@
-# pseudocode blog
+# pseudocoder blog
 
-The pseudocode blog is built with MkDocs.
+The pseudocoder blog is built with MkDocs.
 
 ## Installation Instruction
 

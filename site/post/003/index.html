@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>003 - pseudocoder</title>
+        <title>Futamura Projection - pseudocoder</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -50,8 +50,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#placeholder" class="nav-link">Placeholder</a>
+            <li class="nav-item" data-level="1"><a href="#futamura-projection" class="nav-link">Futamura Projection</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#initial" class="nav-link">Initial</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#projection-1" class="nav-link">Projection 1</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#projection-2" class="nav-link">Projection 2</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#projection-3" class="nav-link">Projection 3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -59,10 +75,61 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>2025-11-21</p>
-<h1 id="placeholder">Placeholder</h1>
-<p>Something good is coming</p>
-<p><br/><a href="../002/"><em>&lt; Previous</em></a></p></div>
+<h1 id="futamura-projection">Futamura Projection</h1>
+<p>If you search online for Futamura Projection, it will redirect you to the Partial Evaluation Wikipedia page.  So how are they related? Partial evaluation is a technique to move some of the runtime work to compile time, thereby speeding up the executable. Futamura projection is to repeatedly apply partial evaluation to an interpreter, thereby creating a JIT compiler.</p>
+<p>The following diagrams are based on <a href="https://www.youtube.com/watch?v=n_k6O50Nd-4">a talk by Tom Stuart</a> which explains Futamura projections in a way I can understand.</p>
+<h2 id="initial">Initial</h2>
+<pre><code>     Source--&gt;+-------------+
+      Input--&gt;| Interpreter |--&gt;Output
+              +-------------+
+</code></pre>
+<h2 id="projection-1">Projection 1</h2>
+<pre><code>Interpreter--&gt;+-------------+
+     Source--&gt;|     PE1     |--&gt;Executable
+              +-------------+      .
+                                   .
+                                   .
+                            +-------------+
+                     Input-&gt;| Executable  |--&gt;Output
+                            +-------------+
+</code></pre>
+<h2 id="projection-2">Projection 2</h2>
+<pre><code>                            +-------------+&lt;--PE1
+                 Compiler&lt;--|     PE2     |&lt;--Interpreter
+                    .       +-------------+
+                    .
+                    .
+              +-------------+
+     Source--&gt;|  Compiler   |--&gt;Executable
+              +-------------+      .
+                                   .
+                                   .
+                            +-------------+
+                     Input-&gt;| Executable  |--&gt;Output
+                            +-------------+
+</code></pre>
+<h2 id="projection-3">Projection 3</h2>
+<pre><code>        PE2--&gt;+-------------+
+        PE1--&gt;|     PE3     |--&gt;Compiler Generator
+              +-------------+      .
+                                   .
+                                   .
+                            +-------------+
+                 Compiler&lt;--|   Comp Gen  |&lt;--Interpreter
+                    .       +-------------+
+                    .
+                    .
+              +-------------+
+     Source--&gt;|  Compiler   |--&gt;Executable
+              +-------------+      .
+                                   .
+                                   .
+                            +-------------+
+                     Input-&gt;| Executable  |--&gt;Output
+                            +-------------+
+</code></pre>
+<p><br/><em>Posted: 2025-12-21</em>
+<br/><a href="../002/"><em>Previous</em></a></p></div>
             </div>
         </div>
 

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>SICP Exercise 3.2 - pseudocoder</title>
+        <title>Sudoku Solver - pseudocoder</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -50,8 +50,12 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#sicp-exercise-32" class="nav-link">SICP Exercise 3.2</a>
+            <li class="nav-item" data-level="1"><a href="#sudoku-solver" class="nav-link">Sudoku Solver</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#references" class="nav-link">References</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -59,45 +63,51 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="sicp-exercise-32">SICP Exercise 3.2</h1>
-<p><strong>Structure and Interpretation of Computer Programs</strong></p>
-<p>Exercise 3.2.  In software-testing applications, it is useful to be able to count the number of times a given procedure is called during the course of a computation. Write a procedure make-monitored that takes as input a procedure, f, that itself takes one input. The result returned by make-monitored is a third procedure, say mf, that keeps track of the number of times it has been called by maintaining an internal counter. If the input to mf is the special symbol how-many-calls?, then mf returns the value of the counter. If the input is the special symbol reset-count, then mf resets the counter to zero. For any other input, mf returns the result of calling f on that input and increments the counter. For instance, we could make a monitored version of the sqrt procedure:</p>
-<pre><code>(define s (make-monitored sqrt))
-
-(s 100)
-10
-
-(s 'how-many-calls?)
-1
+<h1 id="sudoku-solver">Sudoku Solver</h1>
+<p>Elliot Lichtman did a great job in explaining algorithms through puzzles and strategy games in his book <em>The Computer Always Wins</em> [1]. He tells you not only the how but also the why, and he does it in a fun way!</p>
+<p>In one of the chapters, he says recursion is a good choice to solve certain kind of puzzle like sudoku. One of the reasons is that the states are inherently kept in the recursive call flow, hence no need for an explicit state management structure.</p>
+<p>I coded a sudoku solver [2] in the Go programming language loosely based on his algorithm.  Below is the key routine.  Notice solveSudoku() is recursively calling itself to solve the puzzle.</p>
+<pre><code>func solveSudoku() bool {
+    iterations++
+    depth++
+    if flagGraph {
+        fmt.Printf("%s\n", strings.Repeat("*", depth))
+    }
+    if depth &gt; maxdepth {
+        maxdepth = depth
+    }
+    for i := 0; i &lt; 9; i++ {
+        for j := 0; j &lt; 9; j++ {
+            if board[i][j] == 0 {
+                for num := 1; num &lt;= 9; num++ {
+                    if isValid(i, j, num) {
+                        board[i][j] = num
+                        if solveSudoku() {
+                            depth--
+                            return true
+                        }
+                        board[i][j] = 0
+                    }
+                }
+                depth--
+                return false
+            }
+        }
+    }
+    depth--
+    return true
+}
 </code></pre>
-<p><strong>Implementation</strong></p>
-<pre><code>#lang racket
-
-(define (make-monitored f)
-  (define count 0)
-  (define (mf a)
-    (cond [(eq? a 'how-many-calls?) count]
-          [(eq? a 'reset-count) (set! count 0)]
-          [else (set! count (+ count 1))
-                (f a)]
-    )
-  )
-  mf
-)
+<p>If you have the Go toolchain installed, you can install the sudoku solver and play around with it:</p>
+<pre><code>$ go install github.com/davidfung/sudoku@latest
 </code></pre>
-<p><strong>Test</strong></p>
-<pre><code>(define s (make-monitored sqrt))
-(s 144)                 ; 12
-(s 121)                 ; 11
-(s 'how-many-calls?)    ; 2
-(s 'reset-count)        
-(s 9)                   ; 3
-(s 'how-many-calls?)    ; 1
-</code></pre>
-<p><strong>Epilog</strong></p>
-<p>This is my attempt on SICP Exercise 3.2 in the programming language Racket.  I am impressed that the Scheme code in the book still runs unchanged several decades later in Racket. </p>
-<p><br/><em>Posted: 2025-08-19</em>
-<br/><a href="../002/">⇨</a></p></div>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.thecomputeralwayswins.com">https://www.thecomputeralwayswins.com</a></li>
+<li><a href="https://github.com/davidfung/sudoku">https://github.com/davidfung/sudoku</a></li>
+</ol>
+<p><br/><em>Posted: 2026-03-21</em>
+<br/><a href="../004/">⇦ </a></p></div>
             </div>
         </div>
 

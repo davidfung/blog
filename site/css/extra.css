@@ -1,7 +1,15 @@
 .nav-link {
-  display: none;
+    display: none;
 }
 
 div.col-md-3 {
-  display: none;
+    display: none;
+}
+
+footer.col-md-12 p {
+    display: none;
+}
+
+footer.col-md-12::after {
+    content: "pseudocoder blog";
 }

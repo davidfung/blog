@@ -1,3 +1,4 @@
+  - 006 [motd](post/006.md)
   - 005 [Sudoku Solver](post/005.md)
   - 004 [Programming Paradigms](post/004.md)
   - 003 [Futamura Projection](post/003.md)

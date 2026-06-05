@@ -4,24 +4,24 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
         
         
-        <link rel="shortcut icon" href="img/favicon.ico">
-        <title>AMG Computing</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/base.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>motd - AMG Computing</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
-        <link href="css/extra.css" rel="stylesheet">
+        <link href="../../css/extra.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
         <script>hljs.highlightAll();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">AMG Computing</a>
+                <a class="navbar-brand" href="../..">AMG Computing</a>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -49,19 +49,57 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#motd" class="nav-link">motd</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#reference" class="nav-link">Reference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<ul>
-<li>006 <a href="post/006/">motd</a></li>
-<li>005 <a href="post/005/">Sudoku Solver</a></li>
-<li>004 <a href="post/004/">Programming Paradigms</a></li>
-<li>003 <a href="post/003/">Futamura Projection</a></li>
-<li>002 <a href="post/002/">Crafting IsOdd()</a></li>
-<li>001 <a href="post/001/">SICP Exercise 3.2</a></li>
-</ul></div>
+<h1 id="motd">motd</h1>
+<p><em>2026-06-04</em></p>
+<p>motd (message of the day) is an oldie often used by sysadmin to display a
+greeting message upon a successful login.  I wrote a Go project[1] which is
+both a motd library (which you can import) and a command line tool (which you
+can run).  Here is the Go project structure:</p>
+<pre><code>/home/david/dev/motd
+├── README
+├── cmd
+│   └── motd_cli
+│       └── main.go
+├── go.mod
+├── motd.go
+└── motd.txt
+</code></pre>
+<p>To use it as a library, import it and call motd.Next():</p>
+<pre><code>import "github.com/davidfung/motd"
+</code></pre>
+<p>To use it as a command line tool:</p>
+<pre><code>$ go install github.com/davidfung/motd/cmd/motd_cli@latest
+$ motd_cli
+</code></pre>
+<p>It is a good convention to put each command line tool in a separate folder
+under a "cmd" folder at the project root.  Each subfolder in the "cmd" folder
+is a Go package.  Since all these Go packages belong to the same Go module,
+there is no need to have a separate go.mod file for each of the them.  </p>
+<p>Remember:</p>
+<ol>
+<li>A Go project is called a module.</li>
+<li>A Go module is for code distribution.</li>
+<li>A Go package is for code reuse.</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ol>
+<li><a href="https://github.com/davidfung/motd">https://github.com/davidfung/motd</a></li>
+</ol>
+<p><br/><a href="../005/">⇦ </a> <a href="../../">Index</a></p></div>
             </div>
         </div>
 
@@ -69,14 +107,14 @@
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
         <script>
-            var base_url = ".",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="js/base.js"></script>
-        <script src="search/main.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -141,8 +179,3 @@
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.5.3
-Build Date UTC : 2026-06-05 07:11:45.525453+00:00
--->

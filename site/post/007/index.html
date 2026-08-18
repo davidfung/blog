@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>motd - AMG Computing</title>
+        <title>AI & School System - AMG Computing</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -50,12 +50,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-light">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#motd" class="nav-link">motd</a>
+            <li class="nav-item" data-level="1"><a href="#ai-school-system" class="nav-link">AI &amp; School System</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#reference" class="nav-link">Reference</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -63,43 +59,21 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="motd">motd</h1>
-<p><em>2026-06-04</em></p>
-<p>motd (message of the day) is an oldie often used by sysadmin to display a
-greeting message upon a successful login.  I wrote a Go project[1] which is
-both a motd library (which you can import) and a command line tool (which you
-can run).  Here is the Go project structure:</p>
-<pre><code>/home/david/dev/motd
-├── README
-├── cmd
-│   └── motd_cli
-│       └── main.go
-├── go.mod
-├── motd.go
-└── motd.txt
-</code></pre>
-<p>To use it as a library, import it and call motd.Next():</p>
-<pre><code>import "github.com/davidfung/motd"
-</code></pre>
-<p>To use it as a command line tool:</p>
-<pre><code>$ go install github.com/davidfung/motd/cmd/motd_cli@latest
-$ motd_cli
-</code></pre>
-<p>It is a good convention to put each command line tool in a separate folder
-under a "cmd" folder at the project root.  Each subfolder in the "cmd" folder
-is a Go package.  Since all these Go packages belong to the same Go module,
-there is no need to have a separate go.mod file for each of the them.  </p>
-<p>Remember:</p>
-<ol>
-<li>A Go project is called a module.</li>
-<li>A Go module is for code distribution.</li>
-<li>A Go package is for code reuse.</li>
-</ol>
-<h2 id="reference">Reference</h2>
-<ol>
-<li><a href="https://github.com/davidfung/motd">https://github.com/davidfung/motd</a></li>
-</ol>
-<p><a href="../005/">⇦</a> <a href="/">Index</a> <a href="../007/">⇨</a></p></div>
+<h1 id="ai-school-system">AI &amp; School System</h1>
+<p><em>2026-08-07</em></p>
+<p>AI empowers people to do a lot of things not possible before.</p>
+<p>It enables an ordinary person to do things only an expert can do. And most
+importantly, AI empowers people to learn.</p>
+<p>I used to get stuck when facing a programming problem because I have nobody to
+ask.  But not any more. I can ask an AI and it does not only explains it to me
+but also in a way that I can understand.  It is an extremely patient teacher
+with infinite resources and available all the time.  It is your 24/7 personal tutor.</p>
+<p>AI enables self-paced learning at scale.  Anymore who is eager to learn can
+learn as fast as he can.  No need for enrollment. No more fixed cirriculum. No
+more grading system.  No more geographical boundary. And teachers are always
+available.</p>
+<p>The school system will need to adapt in order to remain relevant.</p>
+<p><a href="../006/">⇦ </a> <a href="../../">Index</a></p></div>
             </div>
         </div>
 

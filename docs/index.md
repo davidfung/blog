@@ -1,3 +1,4 @@
+  - 008 [Go Module Package Import](post/008.md)
   - 007 [AI & School System](post/007.md)
   - 006 [motd](post/006.md)
   - 005 [Sudoku Solver](post/005.md)
